@@ -1,0 +1,43 @@
+:root {
+  --letterSpacing: 0.04rem;
+  --offWhite: #f2f2f2;
+  --beige: #efeae5;
+  --lightGrey: #888888;
+  --blue: #007272;
+  --darkGrey: #474747;
+  --black: #303030;
+  --poppins: "Poppins", sans-serif;
+  --transition: 500ms ease-in-out;
+  --boxShadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+  --cardBorderRadius: 16px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+}
+
+.center {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.icon-logo {
+  position: absolute !important;
+  top: 2px !important;
+}
+textarea {
+  font-family: "Poppins", sans-serif;
+}
+input {
+  font-family: "Poppins", sans-serif;
+}
+select {
+  font-family: "Poppins", sans-serif;
+}
+
+.error {
+  text-align: center;
+  color: red;
+}
