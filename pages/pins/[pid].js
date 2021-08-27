@@ -14,6 +14,7 @@ export async function getServerSideProps(context) {
 
     const response = await fetch(`https://inspiry.co.nz/wp-json/wp/v2/projects?slug=${pinID}`)
     const data = await response.json()
+
     const pinData = {
         title: data[0].title.rendered,
         gallery: data[0].acf.gallery,

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import ILogo from './ILogo/ILogo'
-import axios from 'axios'
 function Logo(props) {
     const [logo, setLogo] = useState('')
     useEffect(() => {

@@ -17,34 +17,14 @@ function ShareDownloadIcons(props) {
     // const shareUrl = `${process.env.url}${router.asPath}`
     const shareUrl = "https://inspiry.co.nz/products/abaca-300cm-unc-chalk-uncoated/"
 
-    const downloadHandler = e => {
-        e.preventDefault()
-        console.log(e.target.href);
-        fetch(e.target.href, {
-            method: "GET",
-            headers: {}
-        })
-            .then(response => {
-                response.arrayBuffer().then(function (buffer) {
-                    const url = window.URL.createObjectURL(new Blob([buffer]));
-                    const link = document.createElement("a");
-                    link.href = url;
-                    // link.setAttribute("download", "image.png"); //or any other extension
-                    document.body.appendChild(link);
-                    link.click();
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
+
     return (
         <Container>
             <Share clicked={shareClickHandler} />
             <IconContainer>
-                <Anchor download href={props.src} title="ImageName" onClick={downloadHandler} >
-                    <IconStyle icon={faDownload} />
-                </Anchor>
+                {/* <Anchor href={props.src} title="ImageName" > */}
+                <IconStyle icon={faDownload} />
+                {/* </Anchor> */}
 
             </IconContainer>
 

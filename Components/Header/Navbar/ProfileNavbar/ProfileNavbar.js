@@ -11,18 +11,22 @@ function ProfileNavbar(props) {
         signOut()
     }
 
+    const linkClickHandler = () => {
+        props.profileLinkClick()
+    }
+
     return (
         <Container>
-            <ListStyle>
+            <ListStyle onClick={linkClickHandler}>
                 <Link href="/design-boards" passHref><LinkStyle><IconStyle icon={faHeart} />Design Boards</LinkStyle></Link>
             </ListStyle>
-            <ListStyle>
+            <ListStyle onClick={linkClickHandler}>
                 <Link href="/order-history" passHref><LinkStyle><IconStyle icon={faHistory} />Order History</LinkStyle></Link>
             </ListStyle>
-            <ListStyle>
+            <ListStyle onClick={linkClickHandler}>
                 <Link href="/projects/add-new-project" passHref><LinkStyle><IconStyle icon={faPlus} />Add Project</LinkStyle></Link>
             </ListStyle>
-            <ListStyle>
+            <ListStyle onClick={linkClickHandler}>
                 <Link href="/edit-profile" passHref><LinkStyle><IconStyle icon={faUser} />Edit Profile</LinkStyle></Link>
             </ListStyle>
             <ListStyle key="115462" onClick={logoutHandler}><IconStyle icon={faSignOut} />Log out</ListStyle>
@@ -57,6 +61,7 @@ const LinkStyle = styled.a`
 cursor: pointer;
  color: var(--darkGrey);
  display: block;
+ text-decoration: none;
 &:hover{ 
     color: black;
 }

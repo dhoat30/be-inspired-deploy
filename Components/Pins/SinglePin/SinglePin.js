@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import ImageCard from '../../UI/Cards/ImageCard/ImageCard'
+import SaveBoard from '../../UI/SaveBoard/SaveBoard'
+import MainBody from './MainBody/MainBody'
 import ShareDownloadIcons from './ShareDownloadIcons/ShareDownloadIcons'
 
 function SinglePin(props) {
@@ -15,10 +17,16 @@ function SinglePin(props) {
                 />
             </ImageContainer>
             <ContentContainer>
-                <ShareDownloadIcons
-                    src={props.pinData.gallery[0].url}
-                    alt={props.pinData.title}
-                />
+                <TopSection>
+                    <ShareDownloadIcons
+                        src={props.pinData.gallery[0].url}
+                        alt={props.pinData.title}
+                    />
+                    <SaveBoard />
+                </TopSection>
+
+                <MainBody pinData={props.pinData} />
+
             </ContentContainer>
         </Container>
     )
@@ -56,10 +64,16 @@ const ImageContainer = styled.div`
 
 const ContentContainer = styled.div`
             width: 50%;
-            padding: 20px 50px;
+            padding: 20px 20px;
             @media (max-width: 1000px){
                 width: 100%;
 }
+`
 
+const TopSection = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`
 
-            `

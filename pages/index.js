@@ -7,14 +7,11 @@ export default function Home() {
   const router = useRouter()
   useEffect(() => {
     getSession().then(sessions => {
-
       if (sessions) {
         router.push('/pins')
       }
     })
   }, [router])
-
-
 
   return (
     <LoggedOut />

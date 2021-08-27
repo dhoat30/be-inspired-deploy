@@ -62,6 +62,11 @@ function Navbar() {
     const arrowDownClickHandler = () => {
         setShowProfileNavbar(showProfileNavbar ? false : true)
     }
+
+    // hide profile navbar on link Click 
+    const profileLinkClickHandler = () => {
+        setShowProfileNavbar(false)
+    }
     return (
         <React.Fragment>
             <Container showMobileMenu={showMobileMenu}>
@@ -82,7 +87,7 @@ function Navbar() {
 
 
                 {showProfileNavbar ?
-                    <ProfileNavbar /> :
+                    <ProfileNavbar profileLinkClick={profileLinkClickHandler} /> :
                     null
                 }
 
