@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+
 function MediumTitle(props) {
     return (
         <Container className={props.className} align={props.align}>{props.children} </Container>

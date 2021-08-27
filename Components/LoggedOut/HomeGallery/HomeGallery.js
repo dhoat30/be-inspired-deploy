@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Card from '../../UI/Cards/Card/Card'
+import Card from '../../UI/Cards/ImageCard/ImageCard'
 
 import * as styles from './HomeGallery.module.css';
 

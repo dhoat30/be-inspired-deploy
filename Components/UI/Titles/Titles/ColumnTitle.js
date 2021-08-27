@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 function ColumnTitle(props) {
     return (
-        <Container>{props.children}</Container>
+        <Container className={props.className}>{props.children}</Container>
     )
 }
 

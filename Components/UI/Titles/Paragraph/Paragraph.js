@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 function Paragraph(props) {
     return (
-        <Container>{props.children}</Container>
+        <Container className={props.className}>{props.children}</Container>
     )
 }
 

@@ -18,6 +18,9 @@ class MyDocument extends Document {
                 <body>
                     <Main />
                     <NextScript />
+                    <script type="text/javascript"
+                        async defer
+                        src="https://assets.pinterest.com/js/pinit.js"></script>
                 </body>
             </Html>
         )
