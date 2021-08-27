@@ -10,26 +10,27 @@ import BackdropSection from '../../UI/Backdrop/BackdropSection'
 import { getSession, useSession } from 'next-auth/client'
 import ProfileNavbar from './ProfileNavbar/ProfileNavbar'
 
-const menuItems = [{
-    title: "Shop",
-    url: "https://inspiry.co.nz/products",
-    linkType: "remote"
-},
-{
-    title: "Trade",
-    url: "/trade",
-    linkType: "local"
-},
-{
-    title: "About",
-    url: "https://inspiry.co.nz/about-us/",
-    linkType: "remote"
-},
-{
-    title: "Blog",
-    url: "https://inspiry.co.nz/inspiry-blogs/",
-    linkType: "remote"
-}
+const menuItems = [
+    {
+        title: "Pins",
+        url: "/pins",
+        linkType: "local"
+    },
+    {
+        title: "Shop",
+        url: "https://inspiry.co.nz/products",
+        linkType: "remote"
+    },
+    {
+        title: "Trade",
+        url: "/trade",
+        linkType: "local"
+    },
+    {
+        title: "Blog",
+        url: "https://inspiry.co.nz/inspiry-blogs/",
+        linkType: "remote"
+    }
 ]
 
 function Navbar() {
@@ -111,6 +112,7 @@ flex-direction: row;
 align-items: center;
 justify-content: flex-end;
 background: white;
+height: 50px;
 
 @media(max-width: 1000px){ 
     box-shadow: var(--boxShadow);
@@ -120,12 +122,13 @@ background: white;
     top: 50px;
     right: 0;
     display: ${(props) => !props.showMobileMenu ? "none" : "block"};
+    z-index: 12;
 }
 `
 const Buttons = styled.div`
 display: flex;
 flex-direction: row;
-width: 175px;
+width: 200px;
 justify-content: space-between;
 padding-left: 20px;
 @media(max-width: 1000px){ 
@@ -152,9 +155,9 @@ padding-left: 20px;
  &:hover{ 
      cursor: pointer;
  }
- @media (max-width: 450px){ 
-    width: 25px !important;
-}
+  @media (max-width: 450px){ 
+    font-size: 50px;
+} 
 `
 const ProfileButtonContainer = styled.div`
     width: 80px;

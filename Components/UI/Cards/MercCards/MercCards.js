@@ -1,17 +1,19 @@
 import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components';
-
-function Card(props) {
+function MercCards(props) {
     return (
-        <React.Fragment>
-            <ImgStyle src={props.src} />
-        </React.Fragment>
-
+        <ImgStyle src={props.src}
+            layout="fill"
+        />
     )
 }
 
-export default Card
+export default MercCards
+
 const ImgStyle = styled.img`
     border-radius: var(--cardBorderRadius);
+    width: 100%;
+    height: auto;
+    object-fit: scale-down;
 `
