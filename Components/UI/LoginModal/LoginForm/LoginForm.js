@@ -6,10 +6,10 @@ import Button from '../../Button/Button'
 import styled from 'styled-components';
 import LoginModalContext from '../../../../store/login-modal-context';
 import { signIn } from 'next-auth/client'
-
+import { useRouter } from 'next/router';
 
 function RegisterForm(props) {
-
+    const router = useRouter()
     const loginModalCtx = useContext(LoginModalContext)
 
     // submission error
@@ -83,6 +83,7 @@ function RegisterForm(props) {
         console.log(result)
         if (!result.error && result.status === 200) {
             console.log('add redirection here')
+            router.push("/pins")
         }
         else {
             setSubmissionError(result.error)

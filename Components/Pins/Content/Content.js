@@ -32,19 +32,21 @@ function Content(props) {
 
     })
     return (
-        <Container className={`${styles.mercCardsContainer}`}>
+        <React.Fragment>
+            <Container className={`${styles.mercCardsContainer}`}>
+                {card}
+                {card}
+                {card}
+                {card}
+                {card}
+                {card}
+                {card}
+                {card}
+                {card}
+            </Container>
             <LoadingOverlay show={showOverlay} />
+        </React.Fragment>
 
-            {card}
-            {card}
-            {card}
-            {card}
-            {card}
-            {card}
-            {card}
-            {card}
-            {card}
-        </Container>
     )
 }
 

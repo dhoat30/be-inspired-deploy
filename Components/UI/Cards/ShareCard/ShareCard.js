@@ -75,9 +75,17 @@ border-radius: var(--cardBorderRadius);
  box-shadow: var(--boxShadow);
  padding: 10px;
  margin-top: 10px;
- max-width: 400px;
- width: 100%;
- position: absolute;
+ min-width: 350px;
+ width:400px;
+position: absolute;
+ background: white;
+ @media (max-width :460px){
+     width: 100%;
+ }
+ @media (max-width :400px){
+     width: 100%;
+     min-width: 240px;
+ }
 `
 const ShareButton = styled.div`
 display: flex;

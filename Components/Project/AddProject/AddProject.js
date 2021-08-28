@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import DetailForm from './DetailForm/DetailForm'
 import UploadBox from './UploadBox/UploadBox'
-
+import UnderlineLink from '../../UI/Titles/Links/UnderlineLink'
 function AddProject(props) {
     const [categoryData, setCategoryData] = useState('')
     const [tradeData, setTradeData] = useState('')
@@ -55,6 +55,8 @@ function AddProject(props) {
     }
     return (
         <Container>
+
+            <UnderlineLinkStyle href="/pins">Create a Project</UnderlineLinkStyle>
             <ContentBox>
                 <UploadBox authToken={props.authToken}
                     onUploadData={uploadHandler}
@@ -80,10 +82,12 @@ const Container = styled.section`
     width: 100%;
     border: solid var(--offWhite);
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 `
 const ContentBox = styled.div`
     width: 100%;
-    margin: 100px auto;
+    margin: 0 auto;
     max-width: 1200px;
     background: white;
     box-shadow: var(--boxShadow); 
@@ -94,4 +98,9 @@ const ContentBox = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
+`
+const UnderlineLinkStyle = styled(UnderlineLink)`
+max-width: 1200px;
+margin: 50px auto 30px auto;
+
 `
