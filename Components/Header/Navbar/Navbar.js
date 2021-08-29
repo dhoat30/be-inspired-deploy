@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import Menu from '../../UI/Menu/Menu'
 import styled from 'styled-components'
 import Button from '../../UI/Button/Button'
@@ -7,7 +7,7 @@ import { faBars, faTimes, faChevronDown, faChevronUp } from '@fortawesome/pro-li
 import Login from '../Login/Login'
 import LoginModalContext from '../../../store/login-modal-context'
 import BackdropSection from '../../UI/Backdrop/BackdropSection'
-import { getSession, useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/client'
 import ProfileNavbar from './ProfileNavbar/ProfileNavbar'
 
 const menuItems = [

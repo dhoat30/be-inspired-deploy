@@ -105,18 +105,20 @@ function DetailForm(props) {
             .then(res => res.json())
             .then(res => {
                 setLoading(false)
-                // clear data
-                document.getElementById("detail-form").reset();
-                setEnteredTitle('')
-                setEnteredCategory('')
-                setEnteredSubCategory('')
-                setEnteredTradeProfessional('')
-                setEnteredWebsite('')
-                setEnteredDesc('')
                 // clear image uploader 
                 props.clearImageUploader()
                 if (res.data.code) {
                     setError(res.data.message)
+                }
+                else {
+                    // clear data
+                    document.getElementById("detail-form").reset();
+                    setEnteredTitle('')
+                    setEnteredCategory('')
+                    setEnteredSubCategory('')
+                    setEnteredTradeProfessional('')
+                    setEnteredWebsite('')
+                    setEnteredDesc('')
                 }
             })
             .catch(err => {

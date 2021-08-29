@@ -2,9 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import styled from 'styled-components'
 import { faSpinner } from '@fortawesome/pro-duotone-svg-icons'
-function LoadingOverlay(props) {
-    return (
+import ReactDOM from 'react-dom'
 
+function LoadingOverlay(props) {
+
+    return (
         <Container>
             {props.show ?
                 <Overlay>

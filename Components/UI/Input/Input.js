@@ -23,7 +23,7 @@ export default Input
 const InputStyle = styled.input`
   display: block;
   width: calc(100% - 2px);
-  height: 40px;
+  height: 45px;
   border: 2px solid #ddd;
   outline: none;
   margin: 10px 0 0 0;

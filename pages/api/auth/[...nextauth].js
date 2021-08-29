@@ -26,12 +26,15 @@ export default NextAuth({
                         return err.response.status
                     })
 
-
+                console.log(user)
                 if (user === 403) {
                     throw new Error("Email or password is incorrect")
                 }
 
-                return { email: user.data.token }
+                return {
+                    email: user.data.token,
+                    name: user.data.user_nicename
+                }
             }
         })
     ]
