@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import ProfilePicture from './ProfilePicture/ProfilePicture'
 import LoadingOverlay from '../UI/LoadingOverlay/LoadingOverlay'
@@ -7,7 +7,10 @@ import SideNavbar from './SideNavbar/SideNavbar'
 import DesignBoards from './Body/DesignBoards/DesignBoards'
 import ViewOrders from './Body/ViewOrders/ViewOrders'
 import EditProfile from './Body/EditProfile/EditProfile'
+
 function Dashboard({ authToken }) {
+
+    const [userID, setUserID] = useState('')
     const [userData, setUserData] = useState('')
     const [showDesignBoards, setShowDesignBoards] = useState(true)
     const [showViewOrders, setShowViewOrders] = useState(false)
@@ -41,12 +44,12 @@ function Dashboard({ authToken }) {
         // register request
         axios.get(`https://inspiry.co.nz/wp-json/wp/v2/users?slug=${authToken.username}`)
             .then(response => {
-
+                setUserID(response.data[0].id)
                 return axios({
                     method: 'post',
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvaW5zcGlyeS5jby5ueiIsImlhdCI6MTYzMDE0ODQ0NCwibmJmIjoxNjMwMTQ4NDQ0LCJleHAiOjE2MzA3NTMyNDQsImRhdGEiOnsidXNlciI6eyJpZCI6IjEyIn19fQ.VfWddrb8RD1JC2yR62O_SGO_dBVXFF9_M-nCDfXZNdI"
+                        "Authorization": `Bearer ${authToken.token}`
                     },
                     url: `https://inspiry.co.nz/wp-json/wp/v2/users/${response.data[0].id}`,
                     data: {
@@ -60,6 +63,9 @@ function Dashboard({ authToken }) {
             })
     }, [authToken.username])
 
+    if (userID) {
+        authToken.userID = userID
+    }
 
     return (
         <React.Fragment>
@@ -77,7 +83,7 @@ function Dashboard({ authToken }) {
                     <Body>
                         {showDesignBoards ? <DesignBoards /> : null}
                         {showViewOrders ? <ViewOrders /> : null}
-                        {showEditProfile ? <EditProfile userData={userData} /> : null}
+                        {showEditProfile ? <EditProfile userData={userData} authToken={authToken} /> : null}
                     </Body>
                 </Container>
                 : <LoadingOverlay show={true} />}

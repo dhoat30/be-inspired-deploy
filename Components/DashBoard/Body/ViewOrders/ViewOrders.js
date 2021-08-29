@@ -1,11 +1,17 @@
 import React from 'react'
+import styled from 'styled-components'
+import SectionTitle from '../../../UI/Titles/Titles/SectionTitle'
 
-function ViewOrders() {
+function ViewOrders({ userData, authToken }) {
+
     return (
-        <div>
-            view orders
-        </div>
+        <Container>
+            <SectionTitle> Order History</SectionTitle>
+        </Container>
     )
 }
-
 export default ViewOrders
+
+const Container = styled.div`
+    padding: 20px 30px;
+`

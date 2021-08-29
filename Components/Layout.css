@@ -41,3 +41,6 @@ select {
   text-align: center;
   color: red;
 }
+.left-align {
+  text-align: left;
+}

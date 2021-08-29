@@ -1,4 +1,3 @@
-import { faTabletRugged } from '@fortawesome/pro-duotone-svg-icons'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import DetailForm from './DetailForm/DetailForm'

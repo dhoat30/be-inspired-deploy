@@ -1,12 +1,20 @@
-import Head from 'next/head'
 import AllPins from '../../Components/Pins/AllPins'
+import { useEffect, useContext } from 'react'
+import AuthContext from '../../store/auth-context'
+import { getSession } from 'next-auth/client'
 
 export default function Pins(props) {
+    const authCtx = useContext(AuthContext)
+
+    useEffect(() => {
+        getSession().then(sessions => {
+            authCtx.login(sessions.user.email)
+        })
+    }, [])
     return (
         <AllPins projectData={props.projectData} />
     )
 }
-
 
 export async function getServerSideProps() {
     const response = await fetch("https://inspiry.co.nz/wp-json/wp/v2/projects")

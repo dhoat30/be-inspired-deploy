@@ -9,14 +9,14 @@ import { signIn } from 'next-auth/client'
 import { useRouter } from 'next/router';
 
 function RegisterForm(props) {
+
+
+
     const router = useRouter()
     const loginModalCtx = useContext(LoginModalContext)
 
     // submission error
     const [submissionError, setSubmissionError] = useState('')
-
-    // register state
-    const [isRegistered, setIsRegistered] = useState(false)
 
     // email states
     const [email, setEmail] = useState('')

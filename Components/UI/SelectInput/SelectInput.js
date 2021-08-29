@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 function SelectInput(props) {
     const options = props.options.map(item => {
         return (
-            <option key={item.value} value={item.value}>{item.title}</option>
+            <option key={item.title} value={item.title}>{item.title}</option>
         )
     })
+
     return (
-        <Select name={props.name}>
-            {options}
-        </Select>
+        <React.Fragment>
+            {props.defaultValue ?
+                <Select defaultValue={props.defaultValue} name={props.name} onChange={props.onChange} >
+                    {options}
+                </Select>
+
+                :
+                null
+            }
+        </React.Fragment>
+
     )
 }
 

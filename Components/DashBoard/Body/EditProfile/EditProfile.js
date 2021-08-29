@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import SectionTitle from '../../../UI/Titles/Titles/SectionTitle'
 import Form from './Form/Form'
-function EditProfile({ userData }) {
+function EditProfile({ userData, authToken }) {
     const [optionsData, setOptionsData] = useState('')
     useEffect(() => {
         fetch('/api/select-options/select-options')
@@ -14,7 +14,7 @@ function EditProfile({ userData }) {
         <Container>
             <SectionTitle> Edit Profile</SectionTitle>
             {optionsData ?
-                <Form userData={userData} optionsData={optionsData} />
+                <Form userData={userData} optionsData={optionsData} authToken={authToken} />
                 : null
             }
 

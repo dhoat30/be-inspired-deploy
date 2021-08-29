@@ -2,17 +2,19 @@ import Layout from '../Components/Layout'
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import '../Components/Layout.css'
 import { LoginModalContextProvider } from '../store/login-modal-context';
-
+import { AuthContextProvider } from '../store/auth-context';
 
 function MyApp({ Component, pageProps }) {
   return (
     <LoginModalContextProvider>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <AuthContextProvider>
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </AuthContextProvider>
     </LoginModalContextProvider>
   )
 }
