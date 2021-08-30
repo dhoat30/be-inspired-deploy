@@ -9,7 +9,6 @@ import ViewOrders from './Body/ViewOrders/ViewOrders'
 import EditProfile from './Body/EditProfile/EditProfile'
 
 function Dashboard({ authToken }) {
-
     const [userID, setUserID] = useState('')
     const [userData, setUserData] = useState('')
     const [showDesignBoards, setShowDesignBoards] = useState(true)

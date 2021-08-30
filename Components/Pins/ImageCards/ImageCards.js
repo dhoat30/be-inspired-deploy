@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MercCards from '../../UI/Cards/MercCards/MercCards'
-function ImageCards(props) {
+import styled from 'styled-components'
+import Overlay from '../../UI/Overlay/Overlay'
+function ImageCards({ src, showOverlay }) {
+
     return (
-        <div >
+        <Container >
             <div>
-                <MercCards src={props.src} />
+                <MercCards src={src} />
+                {showOverlay ? <OverlayStyle></OverlayStyle> : null}
             </div>
-        </div>
+        </Container>
     )
 }
 
 export default ImageCards
+const Container = styled.div`
+position: relative;
+`
+const OverlayStyle = styled(Overlay)`
+bottom: 8px;
+`
