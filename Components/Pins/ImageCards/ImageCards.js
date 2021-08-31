@@ -3,7 +3,6 @@ import MercCards from '../../UI/Cards/MercCards/MercCards'
 import styled from 'styled-components'
 import Overlay from '../../UI/Overlay/Overlay'
 function ImageCards({ src, showOverlay }) {
-
     return (
         <Container >
             <div>
@@ -20,4 +19,6 @@ position: relative;
 `
 const OverlayStyle = styled(Overlay)`
 bottom: 8px;
+border-radius: var(--cardBorderRadius);
+position: absolute;
 `

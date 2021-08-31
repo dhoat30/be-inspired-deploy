@@ -47,7 +47,6 @@ const Container = styled.div`
     position: absolute;
     width: 90%;
     left: 50%;
-    top: 50px;
     transform: translate(-50%, 0);
     top: 60px;
 }

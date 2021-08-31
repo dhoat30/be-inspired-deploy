@@ -9,9 +9,8 @@ function Overlay({ onClick, className }) {
 
 export default Overlay
 const OverlayStyle = styled.div`
-position: absolute;
+position: fixed;
 background: rgba(1,1,1,0.4);
-border-radius: var(--cardBorderRadius);
 width: 100%;
 bottom: 0;
 top: 0;
