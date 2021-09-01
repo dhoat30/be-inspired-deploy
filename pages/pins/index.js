@@ -1,16 +1,16 @@
 import AllPins from '../../Components/Pins/AllPins'
 import { useEffect, useContext } from 'react'
-import AuthContext from '../../store/auth-context'
 import { getSession } from 'next-auth/client'
-
+import AuthContext from '../../store/auth-context'
 export default function Pins(props) {
-    const authCtx = useContext(AuthContext)
+    const authContext = useContext(AuthContext)
 
     useEffect(() => {
         getSession().then(sessions => {
-            authCtx.login(sessions.user.email)
+            authContext.login(sessions.user.email)
         })
     }, [])
+
     return (
         <AllPins projectData={props.projectData} />
     )

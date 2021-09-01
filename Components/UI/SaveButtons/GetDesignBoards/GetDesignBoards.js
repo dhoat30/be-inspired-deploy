@@ -3,12 +3,12 @@ import Paragraph from '../../Titles/Paragraph/Paragraph'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/pro-light-svg-icons'
-function GetDesignBoards({ title, boardNameClick }) {
+function GetDesignBoards(props) {
     return (
-        <Container onClick={boardNameClick}>
-            <ParagraphStyle>{title}
+        <Container onClick={props.boardNameClick}>
+            <ParagraphStyle color={props.color}>{props.title}
             </ParagraphStyle>
-            <IconStyle icon={faChevronDown} />
+            <IconStyle icon={faChevronDown} color={props.color} />
         </Container>
     )
 }
@@ -21,9 +21,10 @@ cursor: pointer;
 `
 const ParagraphStyle = styled(Paragraph)`
 max-width: 120px;
-color: white;
+color: var(--darkGrey);
+color: ${props => props.color ? props.color : "var(--darkGrey) "};
 `
 const IconStyle = styled(FontAwesomeIcon)`
 margin-left: 10px;
-color: white;
+color: ${props => props.color ? props.color : "var(--darkGrey) "};
 `

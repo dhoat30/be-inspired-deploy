@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import MediumTitle from '../../Titles/Titles/MediumTitle'
 import Search from '../../Search/Search'
@@ -7,8 +7,60 @@ import Image from 'next/image'
 import Button from '../../Button/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/pro-light-svg-icons'
-function DesignBoardsCard() {
-    const [showSaveButton, setShowSaveButton] = useState(false)
+import axios from 'axios'
+
+function DesignBoardsCard({ cancelClick, designBoards, designBoardImages, clickedCardData, authToken }) {
+    const [boardImages, setBoardImages] = useState([])
+    const [showSaveButton, setShowSaveButton] = useState(-1)
+    // useEffect(() => {
+    //     if (designBoardImages) {
+    //         designBoardImages.map(item => {
+    //             fetch(`https://inspiry.co.nz/wp-json/wp/v2/media/${item.featured_media}`)
+    //                 .then(res => res.json())
+    //                 .then(res => setBoardImages((prevVals => [...prevVals, res])))
+    //                 .catch(err => console.log(err))
+    //         })
+    //     }
+
+    // }, [designBoardImages])
+    // console.log(boardImages)
+    const mouseEnterHandler = (id) => {
+        setShowSaveButton(id)
+    }
+
+    // save post to board 
+    const saveButtonHandler = (boardData) => {
+        console.log(clickedCardData)
+        console.log(boardData)
+
+        axios.post('/api/boards/add-to-board', {
+            projectID: clickedCardData.id,
+            boardID: boardData.id,
+            postTitle: clickedCardData.title,
+            status: "publish",
+            token: authToken
+        })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+
+    const designBoard = designBoards.data.map((board, index) => {
+        return (
+            <SingleBoard key={board.id}
+                onMouseEnter={() => mouseEnterHandler(board.id)}
+                onMouseLeave={() => setShowSaveButton(-1)}>
+                <Content>
+                    <ImageStyle
+                        src={"https://inspiry.co.nz/wp-content/uploads/2020/12/icon-card@2x.jpg"}
+                        width="50"
+                        height="50"
+                    />
+                    <ParagraphStyle>{board.title} </ParagraphStyle>
+                </Content>
+                {showSaveButton === board.id ? <Button onClick={() => saveButtonHandler(board)}>Save</Button> : null}
+            </SingleBoard>
+        )
+    })
     return (
         <Container>
             <MediumTitle align="center">Save to board</MediumTitle>
@@ -16,30 +68,21 @@ function DesignBoardsCard() {
                 <SearchStyle />
             </div>
             <Boards>
-                <Paragraph>All Boards</Paragraph>
-                <BoardsContainer>
-                    <SingleBoard
-                        onMouseEnter={() => setShowSaveButton(true)}
-                        onMouseLeave={() => setShowSaveButton(false)}>
-                        <Content>
-                            <ImageStyle
-                                src="https://inspiry.co.nz/wp-content/uploads/2021/07/WK-30052100.jpg"
-                                width="50"
-                                height="50"
-                            />
-                            <ParagraphStyle>Demo</ParagraphStyle>
-                        </Content>
-                        {showSaveButton ? <Button>Save</Button> : null}
-                    </SingleBoard>
+                <Paragraph >All Boards</Paragraph>
+                <BoardsContainer >
 
+                    {designBoard}
                 </BoardsContainer>
             </Boards>
-            <AddBoard>
+            <AddBoard >
                 <IconContainer>
                     <IconStyle icon={faPlus} />
                 </IconContainer>
 
-                <ParagraphStyle>Create Board</ParagraphStyle>
+                <AddBoardButtons>
+                    <ParagraphStyle>Create Board</ParagraphStyle>
+                    <Paragraph onClick={cancelClick}>Cancel</Paragraph>
+                </AddBoardButtons>
             </AddBoard>
         </Container>
     )
@@ -112,6 +155,7 @@ align-items: center;
 margin: 0 25px; 
 padding: 10px 0;
 cursor: pointer;
+
 @media (max-width: 500px) {
     margin: 0 10px 0 10px;
 }
@@ -120,7 +164,13 @@ const IconContainer = styled.div`
 padding: 8px 15px;
 background: var(--beige);
 border-radius: 8px;
+
 `
 const IconStyle = styled(FontAwesomeIcon)`
 font-size: 30px;
+`
+const AddBoardButtons = styled.div`
+display: flex;
+justify-content: space-between;
+width: 100%;
 `

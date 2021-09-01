@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import ImageCard from '../../UI/Cards/ImageCard/ImageCard'
 import SaveBoard from '../../UI/SaveBoard/SaveBoard'
+import SaveButtons from '../../UI/SaveButtons/SaveButtons'
 import MainBody from './MainBody/MainBody'
 import ShareDownloadIcons from './ShareDownloadIcons/ShareDownloadIcons'
 
@@ -22,7 +23,7 @@ function SinglePin(props) {
                         src={props.pinData.gallery[0].url}
                         alt={props.pinData.title}
                     />
-                    <SaveBoard />
+                    <SaveButtonsStyle title="Kitchen" />
                 </TopSection>
 
                 <MainBody pinData={props.pinData} />
@@ -60,7 +61,7 @@ const ImageContainer = styled.div`
             @media (max-width: 1000px){
                 width: 100%;
 }
-            `
+`
 
 const ContentContainer = styled.div`
             width: 50%;
@@ -69,11 +70,18 @@ const ContentContainer = styled.div`
                 width: 100%;
 }
 `
-
 const TopSection = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 `
-
+const SaveButtonsStyle = styled(SaveButtons)`
+position: static !important;
+justify-content: flex-end;
+margin: 0;
+width: 200px;
+top: 0;
+left: 0;
+transform: translate(0,0);
+`

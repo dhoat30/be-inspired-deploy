@@ -11,7 +11,7 @@ const AuthContext = React.createContext({
 export const AuthContextProvider = (props) => {
     let initialToken
 
-    initialToken = "a"
+    initialToken = ""
     const [token, setToken] = useState(initialToken)
 
     // landing page register form visibility

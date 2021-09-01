@@ -3,11 +3,11 @@ import Button from '../Button/Button'
 import GetDesignBoards from './GetDesignBoards/GetDesignBoards'
 import styled from 'styled-components'
 
-function SaveButtons({ title, onClick, boardNameClick }) {
+function SaveButtons({ title, onClick, boardNameClick, className, bkColor, color, saveButtonClick }) {
     return (
-        <Container onClick={onClick}>
-            <GetDesignBoards title={title} boardNameClick={boardNameClick} />
-            <Button bkColor="var(--beige)">Save</Button>
+        <Container onClick={onClick} className={className}>
+            <GetDesignBoards title={title} boardNameClick={boardNameClick} color={color} />
+            <ButtonStyle bkColor={bkColor} onClick={saveButtonClick}>Save</ButtonStyle>
         </Container>
     )
 }
@@ -26,4 +26,7 @@ top: 10px;
 left: 50%;
 transform: translate(-50%, 0);
 z-index: 3;
+`
+const ButtonStyle = styled(Button)`
+margin-left: 15px;
 `
