@@ -18,16 +18,16 @@ function ProfileNavbar(props) {
     return (
         <Container>
             <ListStyle onClick={linkClickHandler}>
-                <Link href="/design-boards" passHref><LinkStyle><IconStyle icon={faHeart} />Design Boards</LinkStyle></Link>
+                <Link href="/members/design-boards" passHref><LinkStyle><IconStyle icon={faHeart} />Design Boards</LinkStyle></Link>
             </ListStyle>
             <ListStyle onClick={linkClickHandler}>
-                <Link href="/order-history" passHref><LinkStyle><IconStyle icon={faHistory} />Order History</LinkStyle></Link>
+                <Link href="/members/order-history" passHref><LinkStyle><IconStyle icon={faHistory} />Order History</LinkStyle></Link>
             </ListStyle>
             <ListStyle onClick={linkClickHandler}>
                 <Link href="/projects/add-new-project" passHref><LinkStyle><IconStyle icon={faPlus} />Add Project</LinkStyle></Link>
             </ListStyle>
             <ListStyle onClick={linkClickHandler}>
-                <Link href="/edit-profile" passHref><LinkStyle><IconStyle icon={faUser} />Edit Profile</LinkStyle></Link>
+                <Link href="/members/edit-profile" passHref><LinkStyle><IconStyle icon={faUser} />Edit Profile</LinkStyle></Link>
             </ListStyle>
             <ListStyle key="115462" onClick={logoutHandler}><IconStyle icon={faSignOut} />Log out</ListStyle>
         </Container>
@@ -48,6 +48,7 @@ position: absolute;
 top: 35px;
 right: 20px;
 padding: 0;
+z-index: 10;
 `
 
 const ListStyle = styled.li`

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import MediumTitle from '../../Titles/Titles/MediumTitle'
 import Search from '../../Search/Search'
@@ -8,10 +8,12 @@ import Button from '../../Button/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/pro-light-svg-icons'
 import axios from 'axios'
-
+import NotificationContext from '../../../../store/notification-context'
 function DesignBoardsCard({ cancelClick, designBoards, designBoardImages, clickedCardData, authToken }) {
     const [boardImages, setBoardImages] = useState([])
     const [showSaveButton, setShowSaveButton] = useState(-1)
+
+    const notificationCtx = useContext(NotificationContext)
     // useEffect(() => {
     //     if (designBoardImages) {
     //         designBoardImages.map(item => {
@@ -40,7 +42,24 @@ function DesignBoardsCard({ cancelClick, designBoards, designBoardImages, clicke
             status: "publish",
             token: authToken
         })
-            .then(res => console.log(res))
+            .then(res => {
+                if (res.data.data.message) {
+                    notificationCtx.showNotification({
+                        title: "Error",
+                        message: `${res.data.data.message}`,
+                        status: "error"
+                    })
+                }
+                else {
+                    notificationCtx.showNotification({
+                        title: "Success",
+                        message: `Saved to ${boardData.title}`,
+                        status: "success"
+                    })
+
+
+                }
+            })
             .catch(err => console.log(err))
     }
 

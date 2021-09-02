@@ -1,34 +1,56 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faHistory, faUser } from '@fortawesome/pro-regular-svg-icons'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 function SideNavbar(props) {
-    const designBoardsHandler = (e) => {
-        props.designBoards()
-    }
-    const viewOrdersHandler = (e) => {
-        props.viewOrders()
-    }
-    const editProfileHandler = (e) => {
-        props.editProfile()
-    }
+    const [showDesignBoards, setShowDesignBoards] = useState(false)
+    const [showViewOrders, setShowViewOrders] = useState(false)
+    const [showEditProfile, setShowEditProfile] = useState(false)
+
+    const router = useRouter()
+    // if (router.asPath === "/members/design-boards") {
+    //     setShowDesignBoards(true)
+    // }
+    // else if (router.asPath === "/members/order-history") {
+    //     setShowViewOrders(true)
+    // }
+    // else if (router.asPath === "/members/edit-profile") {
+    //     setShowEditProfile(true)
+    // }
+
+    // const designBoardsHandler = (e) => {
+    //     props.designBoards()
+    // }
+    // const viewOrdersHandler = (e) => {
+    //     props.viewOrders()
+    // }
+    // const editProfileHandler = (e) => {
+    //     props.editProfile()
+    // }
 
     return (
         <Container>
-            <List onClick={designBoardsHandler} showBackground={props.navData.showDesignBoards}>
-                <IconStyle icon={faHeart} />
-                Design Boards
-            </List>
-            <List onClick={viewOrdersHandler} showBackground={props.navData.showViewOrders}>
-                <IconStyle icon={faHistory} />
-                View Orders
-            </List>
-            <List onClick={editProfileHandler} showBackground={props.navData.showEditProfile}>
-                <IconStyle icon={faUser} />
-                Edit Profile
-            </List>
-
+            <Link href="/members/design-boards" passHref>
+                <List showBackground={showDesignBoards}>
+                    <IconStyle icon={faHeart} />
+                    Design Boards
+                </List>
+            </Link>
+            <Link href="/members/order-history" passHref>
+                <List showBackground={showViewOrders}>
+                    <IconStyle icon={faHistory} />
+                    View Orders
+                </List>
+            </Link>
+            <Link href="/members/edit-profile" passHref>
+                <List showBackground={showEditProfile}>
+                    <IconStyle icon={faUser} />
+                    Edit Profile
+                </List>
+            </Link>
         </Container>
     )
 }

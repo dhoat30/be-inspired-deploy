@@ -8,6 +8,7 @@ import DesignBoardsCard from '../../UI/Cards/DesignBoardsCard/DesignBoardsCard'
 import SaveButtons from '../../UI/SaveButtons/SaveButtons'
 import Overlay from '../../UI/Overlay/Overlay'
 import AuthContext from '../../../store/auth-context'
+import NotificationContext from '../../../store/notification-context'
 import axios from 'axios'
 
 function Content(props) {
@@ -21,6 +22,9 @@ function Content(props) {
     // get auth token 
     const authContext = useContext(AuthContext)
     let token = authContext.token
+
+    // notification context
+    const notificationCtx = useContext(NotificationContext)
 
     // get the board name 
     useEffect(() => {
@@ -70,7 +74,22 @@ function Content(props) {
             status: "publish",
             token: token
         })
-            .then(res => console.log(res))
+            .then(res => {
+                if (res.data.data.message) {
+                    notificationCtx.showNotification({
+                        title: "Error",
+                        message: `${res.data.data.message}`,
+                        status: "error"
+                    })
+                }
+                else {
+                    notificationCtx.showNotification({
+                        title: "Success",
+                        message: `Saved to ${designBoard.data[0].title}`,
+                        status: "success"
+                    })
+                }
+            })
             .catch(err => console.log(err))
     }
 

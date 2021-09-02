@@ -3,19 +3,26 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import '../Components/Layout.css'
 import { LoginModalContextProvider } from '../store/login-modal-context';
 import { AuthContextProvider } from '../store/auth-context';
-
+import { NotificationContextProvider } from '../store/notification-context';
+import { UserDataContextProvider } from '../store/user-data-context';
 function MyApp({ Component, pageProps }) {
   return (
-    <LoginModalContextProvider>
-      <AuthContextProvider>
-        <GlobalStyle />
-        <ThemeProvider theme={theme}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
-      </AuthContextProvider>
-    </LoginModalContextProvider>
+
+
+    <NotificationContextProvider>
+      <LoginModalContextProvider>
+        <UserDataContextProvider>
+          <AuthContextProvider>
+            <GlobalStyle />
+            <ThemeProvider theme={theme}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </ThemeProvider>
+          </AuthContextProvider>
+        </UserDataContextProvider>
+      </LoginModalContextProvider>
+    </NotificationContextProvider>
   )
 }
 

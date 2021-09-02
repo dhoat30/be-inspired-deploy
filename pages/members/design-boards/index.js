@@ -1,9 +1,9 @@
 import { getSession } from 'next-auth/client'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Dashboard from '../../Components/DashBoard/Dashboard'
+import Dashboard from '../../../Components/DashBoard/Dashboard'
 
-export default function Members() {
+export default function EditProfile() {
     const [authToken, setAuthToken] = useState('')
     const router = useRouter()
     useEffect(() => {

@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components';
 
-function Card(props) {
+function ImageCard(props) {
     return (
         <ImgStyle src={props.src}
             layout="fill"
@@ -11,7 +11,7 @@ function Card(props) {
     )
 }
 
-export default Card
+export default ImageCard
 const ImgStyle = styled(Image)`
     object-fit: cover;
     border-radius: var(--cardBorderRadius);
